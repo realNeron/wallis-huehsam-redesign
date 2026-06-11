@@ -8,6 +8,13 @@
   height: 600px;
   background-color: var(--primary-dark);
   overflow: hidden;
+  margin-top: -90px; /* Pulls hero behind fixed header */
+}
+
+@media (max-width: 576px) {
+  .hero-section {
+    margin-top: -70px;
+  }
 }
 
 .hero-slide {
