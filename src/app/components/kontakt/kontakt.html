@@ -1,0 +1,167 @@
+<div class="kontakt-page-wrapper">
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="container hero-container animate-fade-in">
+      <span class="hero-tag">Direkter Kontakt</span>
+      <h1>Kontaktieren Sie uns</h1>
+      <p class="hero-sub">Haben Sie Fragen oder wünschen Sie ein unverbindliches Angebot? Schreiben Sie uns oder vereinbaren Sie einen Termin.</p>
+    </div>
+  </section>
+
+  <!-- Content Section -->
+  <section class="section kontakt-section">
+    <div class="container">
+      <div class="grid grid-cols-2 content-layout align-start">
+        
+        <!-- Left Side: Office Info Cards -->
+        <div class="info-sidebar animate-fade-in">
+          <div class="sidebar-card card">
+            <h3>Büro Hersbruck</h3>
+            <div class="divider"></div>
+            <ul class="sidebar-contact-list">
+              <li><i class="fa-solid fa-location-dot"></i> <span>Nürnberger Str. 5, 91217 Hersbruck</span></li>
+              <li><i class="fa-solid fa-phone"></i> <a href="tel:09151908480">09151 - 908 48-0</a></li>
+              <li><i class="fa-solid fa-print"></i> <span>09151 - 908 48-15 (Fax)</span></li>
+              <li><i class="fa-solid fa-envelope"></i> <a href="mailto:info@wallis-huehsam.de">info&#64;wallis-huehsam.de</a></li>
+            </ul>
+          </div>
+
+          <div class="sidebar-card card mt-4">
+            <h3>Büro Prichsenstadt</h3>
+            <div class="divider"></div>
+            <ul class="sidebar-contact-list">
+              <li><i class="fa-solid fa-location-dot"></i> <span>97357 Prichsenstadt, Unterfranken</span></li>
+              <li><i class="fa-solid fa-phone"></i> <a href="tel:0938290670">09382 - 90670</a></li>
+              <li><i class="fa-solid fa-envelope"></i> <a href="mailto:helmut.huehsam@wallis-huehsam.de">helmut.huehsam&#64;wallis-huehsam.de</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Right Side: Contact Form Card -->
+        <div class="form-container-panel animate-fade-in">
+          <div class="form-card glass-panel">
+            
+            @if (!isSubmitted()) {
+              <h3>Kontaktformular</h3>
+              <div class="form-divider"></div>
+              
+              <form (ngSubmit)="onSubmit()" #contactForm="ngForm" class="actual-form">
+                
+                <div class="form-row">
+                  <div class="form-group col-md-4">
+                    <label for="anrede">Anrede</label>
+                    <select id="anrede" name="anrede" class="form-control" [(ngModel)]="formData.anrede">
+                      <option value="Bitte auswählen ...">Bitte auswählen ...</option>
+                      <option value="Frau">Frau</option>
+                      <option value="Herr">Herr</option>
+                    </select>
+                  </div>
+                  <div class="form-group col">
+                    <label for="name">Name *</label>
+                    <input type="text" id="name" name="name" class="form-control" [(ngModel)]="formData.name" required #nameInput="ngModel">
+                    @if (nameInput.invalid && nameInput.touched) {
+                      <span class="error-msg">Bitte tragen Sie Ihren Namen ein.</span>
+                    }
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group col">
+                    <label for="strasse">Straße</label>
+                    <input type="text" id="strasse" name="strasse" class="form-control" [(ngModel)]="formData.strasse">
+                  </div>
+                  <div class="form-group col">
+                    <label for="plzOrt">PLZ / Ort</label>
+                    <input type="text" id="plzOrt" name="plzOrt" class="form-control" [(ngModel)]="formData.plzOrt">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="mitteilung">Ihre Mitteilung an uns</label>
+                  <textarea id="mitteilung" name="mitteilung" class="form-control" rows="5" placeholder="Beschreiben Sie hier Ihr Anliegen..." [(ngModel)]="formData.mitteilung"></textarea>
+                </div>
+
+                <!-- Callback Option -->
+                <div class="form-row align-center">
+                  <div class="form-group col">
+                    <label>Wünschen Sie einen Rückruf?</label>
+                    <div class="radio-group">
+                      <label class="radio-label">
+                        <input type="radio" name="rueckrufGewuenscht" value="Ja" [(ngModel)]="formData.rueckrufGewuenscht"> Ja
+                      </label>
+                      <label class="radio-label">
+                        <input type="radio" name="rueckrufGewuenscht" value="Nein" [(ngModel)]="formData.rueckrufGewuenscht"> Nein
+                      </label>
+                    </div>
+                  </div>
+                  @if (formData.rueckrufGewuenscht === 'Ja') {
+                    <div class="form-group col animate-fade-in">
+                      <label for="telefonnummer">Telefonnummer *</label>
+                      <input type="tel" id="telefonnummer" name="telefonnummer" class="form-control" placeholder="Ihre Telefonnummer" [(ngModel)]="formData.telefonnummer" required>
+                    </div>
+                  }
+                </div>
+
+                <!-- Appointment Option -->
+                <div class="form-row align-center">
+                  <div class="form-group col">
+                    <label>Wünschen Sie einen Beratungstermin?</label>
+                    <div class="radio-group">
+                      <label class="radio-label">
+                        <input type="radio" name="terminGewuenscht" value="Ja" [(ngModel)]="formData.terminGewuenscht"> Ja
+                      </label>
+                      <label class="radio-label">
+                        <input type="radio" name="terminGewuenscht" value="Nein" [(ngModel)]="formData.terminGewuenscht"> Nein
+                      </label>
+                    </div>
+                  </div>
+                  @if (formData.terminGewuenscht === 'Ja') {
+                    <div class="form-group col animate-fade-in">
+                      <label for="wunschtermin">Wunschtermin *</label>
+                      <input type="text" id="wunschtermin" name="wunschtermin" class="form-control" placeholder="z.B. Nachmittags, KW 25" [(ngModel)]="formData.wunschtermin" required>
+                    </div>
+                  }
+                </div>
+
+                <div class="form-group">
+                  <label for="email">Ihre E-Mail-Adresse *</label>
+                  <input type="email" id="email" name="email" class="form-control" [(ngModel)]="formData.email" required email #emInput="ngModel">
+                  @if (emInput.invalid && emInput.touched) {
+                    <span class="error-msg">Bitte geben Sie eine gültige E-Mail-Adresse ein.</span>
+                  }
+                </div>
+
+                <div class="checkbox-group mt-3">
+                  <input type="checkbox" id="datenschutzAkzeptiert" name="datenschutzAkzeptiert" [(ngModel)]="formData.datenschutzAkzeptiert" required>
+                  <label for="datenschutzAkzeptiert">
+                    Ich willige ein, dass meine Angaben zur Kontaktaufnahme verarbeitet werden dürfen. Details finden Sie in der <a routerLink="/datenschutz" target="_blank" class="legal-link">Datenschutzerklärung</a>. *
+                  </label>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-submit mt-4" [disabled]="contactForm.invalid || !formData.datenschutzAkzeptiert">Nachricht absenden <i class="fa-solid fa-paper-plane"></i></button>
+              </form>
+            } @else {
+              <!-- Success screen -->
+              <div class="success-screen animate-fade-in">
+                <div class="success-icon-bubble">
+                  <i class="fa-solid fa-check"></i>
+                </div>
+                <h2>Nachricht erfolgreich gesendet!</h2>
+                <p>Vielen Dank, <strong>{{formData.name}}</strong>. Wir haben Ihre Nachricht erhalten und werden uns schnellstmöglich bei Ihnen melden.</p>
+                @if (formData.rueckrufGewuenscht === 'Ja') {
+                  <p class="callback-note">Da Sie einen Rückruf wünschen, werden wir Sie unter <strong>{{formData.telefonnummer}}</strong> kontaktieren.</p>
+                }
+                <button type="button" class="btn btn-primary mt-4" (click)="resetForm()">Neue Nachricht senden</button>
+              </div>
+            }
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Quicklinks Section -->
+  <app-quicklinks></app-quicklinks>
+</div>

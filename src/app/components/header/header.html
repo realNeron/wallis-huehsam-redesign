@@ -1,0 +1,87 @@
+<header class="main-header glass-panel">
+  <div class="container header-container">
+    <a routerLink="/" class="logo-area" (click)="closeMenu()" aria-label="Wallis & Hühsam Startseite">
+      <img src="assets/logo.png" alt="Wallis & Hühsam GmbH & Co. KG Versicherungsmakler" class="company-logo">
+    </a>
+
+    <!-- Mobile Navigation Toggle -->
+    <button class="nav-toggle" (click)="toggleMenu()" aria-label="Menü öffnen" [attr.aria-expanded]="isMenuOpen()">
+      <span class="hamburger" [class.open]="isMenuOpen()"></span>
+    </button>
+
+    <!-- Navigation Menu -->
+    <nav class="main-nav" [class.open]="isMenuOpen()">
+      <ul class="nav-list">
+        <li>
+          <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="closeMenu()">Startseite</a>
+        </li>
+        
+        <!-- Dropdown "Unser Service" -->
+        <li class="dropdown" [class.dropdown-active]="isServiceDropdownOpen()">
+          <a class="dropdown-trigger" (click)="toggleServiceDropdown($event)">
+            Unser Service <i class="fa-solid fa-chevron-down dropdown-arrow"></i>
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a routerLink="/unser-service/was-koennen-wir-fuer-sie-tun" routerLinkActive="active" (click)="closeMenu()">
+                <i class="fa-solid fa-hand-holding-hand"></i> Was können wir tun
+              </a>
+            </li>
+            <li>
+              <a routerLink="/unser-service/schaden-melden" routerLinkActive="active" (click)="closeMenu()">
+                <i class="fa-solid fa-triangle-exclamation"></i> Schaden melden
+              </a>
+            </li>
+            <li>
+              <a routerLink="/unser-service/konzepte/kraftfahrzeuge-und-schlepper" routerLinkActive="active" (click)="closeMenu()">
+                <i class="fa-solid fa-tractor"></i> Kfz & Schlepper
+              </a>
+            </li>
+            <li>
+              <a routerLink="/unser-service/konzepte/maschinenbruch-und-elektronik" routerLinkActive="active" (click)="closeMenu()">
+                <i class="fa-solid fa-microchip"></i> Maschinenbruch & Elektronik
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <!-- Dropdown "Rechner" -->
+        <li class="dropdown" [class.dropdown-active]="isRechnerDropdownOpen()">
+          <a class="dropdown-trigger" (click)="toggleRechnerDropdown($event)">
+            Rechner <i class="fa-solid fa-chevron-down dropdown-arrow"></i>
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a routerLink="/rechner/auslandskrankenversicherung" routerLinkActive="active" (click)="closeMenu()">
+                <i class="fa-solid fa-plane"></i> Auslandskrankenversicherung
+              </a>
+            </li>
+            <li>
+              <a routerLink="/rechner/reiseversicherung-travelsecure" routerLinkActive="active" (click)="closeMenu()">
+                <i class="fa-solid fa-umbrella-beach"></i> Reiseversicherung
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <li>
+          <a routerLink="/in-ihrer-naehe" routerLinkActive="active" (click)="closeMenu()">In Ihrer Nähe</a>
+        </li>
+        
+        <li>
+          <a routerLink="/ueber-uns" routerLinkActive="active" (click)="closeMenu()">Über uns</a>
+        </li>
+        
+        <li>
+          <a routerLink="/unsere-partner" routerLinkActive="active" (click)="closeMenu()">Unsere Partner</a>
+        </li>
+        
+        <li class="contact-cta">
+          <a routerLink="/kontakt" routerLinkActive="active" (click)="closeMenu()" class="contact-cta-btn">
+            <i class="fa-solid fa-phone-volume"></i> Kontakt
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>

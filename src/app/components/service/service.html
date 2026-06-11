@@ -1,0 +1,222 @@
+<div class="service-wrapper">
+  <!-- Page Header -->
+  <section class="page-hero">
+    <div class="container hero-container animate-fade-in">
+      <span class="hero-tag">Umfassende Absicherung</span>
+      <h1>Unser Service & Konzepte</h1>
+      <p class="hero-sub">Entdecken Sie unsere Dienstleistungen und maßgeschneiderte Konzepte für Gewerbe, Landwirtschaft und Ihre Familie.</p>
+    </div>
+  </section>
+
+  <!-- Service Viewport -->
+  <section class="section service-section">
+    <div class="container">
+      
+      <!-- Tab Controls -->
+      <div class="tabs-nav">
+        <button 
+          class="tab-btn" 
+          [class.active]="activeTab() === 'was-tun'" 
+          (click)="switchTab('was-tun')">
+          <i class="fa-solid fa-hand-holding-hand"></i>
+          <span>Was können wir für Sie tun?</span>
+        </button>
+        <button 
+          class="tab-btn" 
+          [class.active]="activeTab() === 'kfz-schlepper'" 
+          (click)="switchTab('kfz-schlepper')">
+          <i class="fa-solid fa-tractor"></i>
+          <span>Kraftfahrzeuge & Schlepper</span>
+        </button>
+        <button 
+          class="tab-btn" 
+          [class.active]="activeTab() === 'maschinenbruch'" 
+          (click)="switchTab('maschinenbruch')">
+          <i class="fa-solid fa-microchip"></i>
+          <span>Maschinenbruch & Elektronik</span>
+        </button>
+      </div>
+
+      <!-- Tab Content Area -->
+      <div class="tab-content">
+        
+        <!-- Was können wir für Sie tun -->
+        @if (activeTab() === 'was-tun') {
+          <div class="tab-pane animate-fade-in">
+            <div class="grid grid-cols-2 align-center content-split">
+              <div>
+                <h2>Professionelle Versicherungsvermittlung gehört in Profihände</h2>
+                <p class="lead-text">Wir entlasten Sie vollumfänglich von zeitaufwendigen Abwicklungs- und Verwaltungsarbeiten rund um Ihren Schutz.</p>
+                <p>Seit über 20 Jahren stehen wir unseren Kunden als freier Partner zur Seite. Erfahren Sie hier, wie wir für Sie arbeiten und welchen Mehrwert Sie durch einen Maklervertrag mit Wallis & Hühsam genießen.</p>
+                
+                <div class="service-highlight">
+                  <i class="fa-solid fa-circle-check"></i>
+                  <div>
+                    <h4>Keine zusätzlichen Kosten</h4>
+                    <p>Unsere Leistungen sind durch die marktüblichen Courtagen der Gesellschaften abgegolten.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="illustration-box">
+                <svg viewBox="0 0 400 300" class="service-svg">
+                  <path d="M50,150 Q100,50 200,150 T350,150" fill="none" stroke="var(--primary-light)" stroke-width="2" stroke-dasharray="5,5"/>
+                  <circle cx="50" cy="150" r="10" fill="var(--primary)"/>
+                  <circle cx="200" cy="150" r="15" fill="var(--secondary)"/>
+                  <circle cx="350" cy="150" r="10" fill="var(--accent)"/>
+                  <!-- Shield on top -->
+                  <path d="M200,80 L230,95 L230,135 L200,155 L170,135 L170,95 Z" fill="var(--primary)" opacity="0.8"/>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Features Grid -->
+            <div class="grid grid-cols-3 features-grid">
+              
+              <div class="feature-card">
+                <div class="feature-icon"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+                <h3>Risikoanalyse</h3>
+                <p>Jeder Betrieb und Haushalt ist individuell. Wir analysieren präzise, gegen welche realen Gefahren vorgesorgt werden muss und filtern unnötige Policen aus.</p>
+              </div>
+
+              <div class="feature-card">
+                <div class="feature-icon"><i class="fa-solid fa-file-signature"></i></div>
+                <h3>Vertragsgestaltung</h3>
+                <p>Wir nehmen direkten Einfluss auf Vertragsinhalte, um Lücken zu schließen, und vereinbaren risiko- und marktgerechte Prämien zu Ihrem Vorteil.</p>
+              </div>
+
+              <div class="feature-card">
+                <div class="feature-icon"><i class="fa-solid fa-network-wired"></i></div>
+                <h3>Versicherer-Netzwerk</h3>
+                <p>Als freie Makler sind wir nicht an Gesellschaften gebunden. Wir vergleichen unabhängig und platzieren Ihre Verträge dort, wo das beste Preis-Leistungs-Verhältnis liegt.</p>
+              </div>
+
+              <div class="feature-card">
+                <div class="feature-icon"><i class="fa-solid fa-user-gear"></i></div>
+                <h3>Laufende Betreuung</h3>
+                <p>Der Versicherungsbedarf ändert sich stetig. Wir passen Ihre Verträge laufend an veränderte Lebens- und Marktverhältnisse an und halten Sie geschützt.</p>
+              </div>
+
+              <div class="feature-card">
+                <div class="feature-icon"><i class="fa-solid fa-shield-heart"></i></div>
+                <h3>Schadenregulierung</h3>
+                <p>Im Schadenfall vertreten wir Ihre Interessen tatkräftig gegenüber dem Versicherer und Gutachtern – bis zur finalen Entschädigungsausbreitung.</p>
+              </div>
+
+              <div class="feature-card">
+                <div class="feature-icon"><i class="fa-solid fa-gavel"></i></div>
+                <h3>EU-Vermittlerrichtlinie</h3>
+                <p>Durch IHK-Registrierung, Leumundsprüfungen und Vermögensschadenshaftpflicht sind Sie rechtlich optimal abgesichert und profitieren von Beratungsdokumentationen.</p>
+              </div>
+
+            </div>
+          </div>
+        }
+
+        <!-- Kraftfahrzeuge und Schlepper -->
+        @if (activeTab() === 'kfz-schlepper') {
+          <div class="tab-pane animate-fade-in">
+            <div class="grid grid-cols-2 content-split align-center">
+              <div>
+                <span class="concept-badge">Kfz-Konzepte</span>
+                <h2>Kraftfahrzeuge & Schlepper</h2>
+                <p class="lead-text">Exklusive Spezialtarife für landwirtschaftliche Betriebe und private Fahrzeughalter.</p>
+                <p>
+                  In enger Zusammenarbeit mit der <strong>MRVV</strong> bieten wir speziell für Landwirte exklusive Kfz-Tarife an. Durch Kooperationen mit Premiumpartnern wie der <strong>KRAVAG</strong> oder der <strong>GHV Darmstadt</strong> garantieren wir maßgeschneiderte Lösungen für Ihre Schlepper, Erntemaschinen und Transportfahrzeuge.
+                </p>
+                <p>
+                  Dazu zählen besondere Tarifleistungen wie der Schutz bei plötzlichen <strong>Brems-, Betriebs- und Bruchschäden (BBB)</strong> sowie extrem flexible Kilometerleistungen und Fahrerkreise.
+                </p>
+                <div class="cta-box">
+                  <h4>Mitgliedschafts-Vorteil</h4>
+                  <p>Mitglieder des Versorgungswerks <strong>pro Agrar e.V.</strong> können sich zusätzliche, exklusive Nachlässe sichern.</p>
+                </div>
+              </div>
+              <div class="details-list-box">
+                <h3>Unsere Kfz-Highlights:</h3>
+                <ul class="concept-checklist">
+                  <li>
+                    <i class="fa-solid fa-check"></i>
+                    <div>
+                      <strong>Flottenkonzepte:</strong> Kleinflottenmodelle (bis 9 Fahrzeuge) und Großflotten-Pauschaltarife (ab 10 Fahrzeugen).
+                    </div>
+                  </li>
+                  <li>
+                    <i class="fa-solid fa-check"></i>
+                    <div>
+                      <strong>BBB-Schutz:</strong> Schutz bei Brems-, Betriebs- und Bruchschäden, die über die normale Kaskoversicherung hinausgehen.
+                    </div>
+                  </li>
+                  <li>
+                    <i class="fa-solid fa-check"></i>
+                    <div>
+                      <strong>Fahrerkreis & Kilometer:</strong> Flexible Anpassung an Erntehelfer, Familienmitglieder oder Saisonnutzungen.
+                    </div>
+                  </li>
+                  <li>
+                    <i class="fa-solid fa-check"></i>
+                    <div>
+                      <strong>Auch für Privatpersonen:</strong> Attraktive, reguläre Tarife für Pkws und Motorräder Ihrer Familie.
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        }
+
+        <!-- Maschinenbruch und Elektronik -->
+        @if (activeTab() === 'maschinenbruch') {
+          <div class="tab-pane animate-fade-in">
+            <div class="grid grid-cols-2 content-split align-center">
+              <div class="details-list-box order-2-mobile">
+                <h3>Was wird versichert?</h3>
+                <ul class="concept-checklist">
+                  <li>
+                    <i class="fa-solid fa-screwdriver-wrench"></i>
+                    <div>
+                      <strong>Ersatzteilkosten:</strong> Vollständige Übernahme der Materialkosten bei Reparaturen.
+                    </div>
+                  </li>
+                  <li>
+                    <i class="fa-solid fa-wallet"></i>
+                    <div>
+                      <strong>Lohn- & Arbeitskosten:</strong> Wir decken die Service-Stunden der Techniker im Schadensfall.
+                    </div>
+                  </li>
+                  <li>
+                    <i class="fa-solid fa-truck-ramp-box"></i>
+                    <div>
+                      <strong>Transportkosten:</strong> Abtransport zur Fachwerkstatt und Rücktransport zum Hof/Betrieb sind abgedeckt.
+                    </div>
+                  </li>
+                  <li>
+                    <i class="fa-solid fa-chart-line"></i>
+                    <div>
+                      <strong>Zeitwerterstattung:</strong> Bei unrentablen Totalschäden wird der Zeitwert des Gerätes unkompliziert erstattet.
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <div class="order-1-mobile">
+                <span class="concept-badge">Technischer Schutz</span>
+                <h2>Maschinenbruch & Elektronik</h2>
+                <p class="lead-text">Absicherung gegen teure Bedienfehler, Vandalismus und Elektronikschäden.</p>
+                <p>
+                  Kein moderner Landwirtschafts- oder Produktionsbetrieb kann heute auf hochkomplexe Technik verzichten. Doch leistungsstärkere Elektronik wird auch empfindlicher. Ein mechanischer Ausfall oder ein Kurzschluss führt schnell zum Stillstand des gesamten Betriebs und reißt tiefe Löcher in das Budget.
+                </p>
+                <p>
+                  Die Maschinenbruch- und Elektronikversicherung fängt diese Risiken auf. Ob Fehlbedienung, Kurzschluss, Vandalismus oder Materialfehler – wir sorgen dafür, dass Sie schnell wieder arbeitsfähig sind.
+                </p>
+                <a routerLink="/kontakt" class="btn btn-secondary mt-3">Beratung anfordern</a>
+              </div>
+            </div>
+          </div>
+        }
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Quicklinks Section -->
+  <app-quicklinks></app-quicklinks>
+</div>

@@ -1,0 +1,296 @@
+.kontakt-page-wrapper {
+  animation: fadeIn var(--transition-slow) forwards;
+}
+
+/* Page Hero shares global layout from service.css */
+.page-hero {
+  background: linear-gradient(135deg, var(--primary-dark) 0%, #112d22 100%);
+  color: var(--text-light);
+  padding: 6rem 0 4rem 0;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(82, 183, 136, 0.15);
+}
+
+.page-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 80% 20%, rgba(82, 183, 136, 0.12) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.hero-tag {
+  display: inline-block;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+}
+
+.page-hero h1 {
+  color: var(--text-light);
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.hero-sub {
+  font-size: 1.15rem;
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 700px;
+  line-height: 1.6;
+}
+
+/* Spacing and Layout */
+.kontakt-section {
+  padding: 4rem 0;
+  background-color: var(--bg-accent);
+}
+
+.content-layout {
+  margin-top: -6rem;
+  margin-bottom: 4rem;
+  gap: 2.5rem;
+  position: relative;
+  z-index: 10;
+}
+
+/* Sidebar Info Cards */
+.info-sidebar {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.sidebar-card {
+  background-color: var(--bg-card);
+  padding: 2.25rem 2rem;
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-color);
+}
+
+.sidebar-card h3 {
+  font-size: 1.35rem;
+  color: var(--primary-dark);
+}
+
+.divider {
+  width: 50px;
+  height: 4px;
+  background-color: var(--secondary);
+  margin: 1rem 0 1.5rem 0;
+  border-radius: var(--border-radius-full);
+}
+
+.sidebar-contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.sidebar-contact-list li {
+  display: flex;
+  gap: 0.85rem;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: var(--text-main);
+  align-items: center;
+}
+
+.sidebar-contact-list li i {
+  color: var(--accent-dark);
+  font-size: 1.1rem;
+  width: 20px;
+}
+
+.sidebar-contact-list a {
+  color: var(--text-main);
+  font-weight: 600;
+}
+
+.sidebar-contact-list a:hover {
+  color: var(--accent-dark);
+  text-decoration: underline;
+}
+
+/* Form Panel */
+.form-container-panel {
+  height: 100%;
+}
+
+.form-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-lg);
+  padding: 3rem;
+  box-shadow: var(--shadow-lg);
+  height: 100%;
+}
+
+.form-card h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary-dark);
+}
+
+.form-divider {
+  width: 100%;
+  height: 1px;
+  background-color: var(--border-color);
+  margin: 1.25rem 0 2rem 0;
+}
+
+.form-row {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.form-row .col-md-4 {
+  width: 33.33%;
+}
+
+.form-row .col {
+  flex: 1;
+}
+
+.error-msg {
+  font-size: 0.8rem;
+  color: #c0392b;
+  font-weight: 600;
+  margin-top: 0.25rem;
+  display: block;
+}
+
+/* Radio Group System */
+.radio-group {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 0.5rem;
+  padding: 0.75rem 0;
+}
+
+.radio-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+  cursor: pointer;
+  color: var(--text-main);
+  font-weight: 500;
+}
+
+.radio-label input[type="radio"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--primary);
+  cursor: pointer;
+}
+
+/* Checkbox group from schaden-melden */
+.checkbox-group {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.checkbox-group input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  margin-top: 0.2rem;
+  cursor: pointer;
+  accent-color: var(--primary);
+}
+
+.checkbox-group label {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  cursor: pointer;
+}
+
+.legal-link {
+  color: var(--primary);
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.btn-submit {
+  width: 100%;
+}
+
+/* Success screen overrides */
+.success-screen {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.success-icon-bubble {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background-color: rgba(82, 183, 136, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem auto;
+}
+
+.success-icon-bubble i {
+  font-size: 3rem;
+  color: var(--accent);
+}
+
+.success-screen h2 {
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+}
+
+.success-screen p {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.callback-note {
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: var(--bg-accent);
+  border-radius: var(--border-radius-sm);
+  color: var(--primary-dark) !important;
+  font-weight: 500;
+}
+
+/* Spacing utilities */
+.mt-4 {
+  margin-top: 1.5rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .content-layout {
+    grid-template-columns: 1fr;
+    margin-top: -4rem;
+    gap: 2rem;
+  }
+  .form-card {
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .form-row {
+    flex-direction: column;
+    gap: 0;
+  }
+  .form-row .col-md-4 {
+    width: 100%;
+  }
+}

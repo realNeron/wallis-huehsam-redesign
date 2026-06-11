@@ -1,0 +1,99 @@
+.legal-page-wrapper {
+  animation: fadeIn var(--transition-slow) forwards;
+}
+
+/* Page Hero shares global layout from service.css */
+.page-hero {
+  background: linear-gradient(135deg, var(--primary-dark) 0%, #112d22 100%);
+  color: var(--text-light);
+  padding: 6rem 0 4rem 0;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(82, 183, 136, 0.15);
+}
+
+.page-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 80% 20%, rgba(82, 183, 136, 0.12) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.hero-tag {
+  display: inline-block;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+}
+
+.page-hero h1 {
+  color: var(--text-light);
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.hero-sub {
+  font-size: 1.15rem;
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 700px;
+  line-height: 1.6;
+}
+
+/* Content Panel */
+.legal-content-section {
+  padding: 4rem 0;
+  background-color: var(--bg-accent);
+}
+
+.legal-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-lg);
+  padding: 4rem 3rem;
+  box-shadow: var(--shadow-lg);
+  max-width: 900px;
+  margin: -6rem auto 4rem auto;
+  position: relative;
+  z-index: 10;
+}
+
+.legal-card h2 {
+  font-size: 1.75rem;
+  color: var(--primary-dark);
+  margin-bottom: 1.5rem;
+}
+
+.legal-card h3 {
+  font-size: 1.25rem;
+  color: var(--primary-light);
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.legal-card p {
+  font-size: 0.95rem;
+  color: var(--text-main);
+  line-height: 1.6;
+  margin-bottom: 1.25rem;
+}
+
+.legal-card strong {
+  color: var(--primary-dark);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .legal-card {
+    padding: 2.25rem 1.75rem;
+    margin-top: -4rem;
+  }
+}

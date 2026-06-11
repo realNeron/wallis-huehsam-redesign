@@ -1,0 +1,342 @@
+<div class="schaden-wrapper">
+  <!-- Page Header -->
+  <section class="page-hero">
+    <div class="container hero-container animate-fade-in">
+      <span class="hero-tag">Schnelle Hilfe im Schadensfall</span>
+      <h1>Schaden melden</h1>
+      <p class="hero-sub">Füllen Sie unser strukturiertes Online-Formular in wenigen Schritten aus. Wir kümmern uns umgehend um die Regulierung.</p>
+    </div>
+  </section>
+
+  <!-- Form Section -->
+  <section class="section form-section">
+    <div class="container">
+      <div class="form-card glass-panel">
+        
+        @if (!isSubmitted()) {
+          <!-- Step Progress Tracker -->
+          <div class="step-tracker">
+            <div class="step-progress" [style.width.%]="(currentStep() - 1) * 25"></div>
+            <button class="step-node" [class.active]="currentStep() >= 1" [class.completed]="currentStep() > 1" (click)="currentStep.set(1)">
+              <span class="node-num">1</span>
+              <span class="node-label">Schadensart</span>
+            </button>
+            <button class="step-node" [class.active]="currentStep() >= 2" [class.completed]="currentStep() > 2" (click)="currentStep.set(2)">
+              <span class="node-num">2</span>
+              <span class="node-label">Kunde</span>
+            </button>
+            <button class="step-node" [class.active]="currentStep() >= 3" [class.completed]="currentStep() > 3" (click)="currentStep.set(3)">
+              <span class="node-num">3</span>
+              <span class="node-label">Zahlung</span>
+            </button>
+            <button class="step-node" [class.active]="currentStep() >= 4" [class.completed]="currentStep() > 4" (click)="currentStep.set(4)">
+              <span class="node-num">4</span>
+              <span class="node-label">Details</span>
+            </button>
+            <button class="step-node" [class.active]="currentStep() >= 5" [class.completed]="currentStep() > 5" (click)="currentStep.set(5)">
+              <span class="node-num">5</span>
+              <span class="node-label">Abschluss</span>
+            </button>
+          </div>
+
+          <form (ngSubmit)="onSubmit()" #claimForm="ngForm" class="wizard-form">
+            
+            <!-- STEP 1: Schadensart -->
+            @if (currentStep() === 1) {
+              <div class="step-pane animate-fade-in">
+                <h3 class="step-title">1. Um was für einen Schaden handelt es sich?</h3>
+                <div class="form-group">
+                  <label for="artDesSchadens">Art des Schadens *</label>
+                  <input 
+                    type="text" 
+                    id="artDesSchadens" 
+                    name="artDesSchadens" 
+                    class="form-control" 
+                    placeholder="z.B. Sturmschaden, Maschinenbruch, Kfz-Unfall, Diebstahl" 
+                    [(ngModel)]="formData.artDesSchadens" 
+                    required 
+                    #artInput="ngModel">
+                  @if (artInput.invalid && artInput.touched) {
+                    <span class="error-msg">Bitte geben Sie die Art des Schadens an.</span>
+                  }
+                </div>
+                
+                <div class="form-group">
+                  <label for="mitgliedsnummer">Ggf. Mitgliedsnummer (pro Agrar / Maschinenring)</label>
+                  <input 
+                    type="text" 
+                    id="mitgliedsnummer" 
+                    name="mitgliedsnummer" 
+                    class="form-control" 
+                    placeholder="Falls vorhanden" 
+                    [(ngModel)]="formData.mitgliedsnummer">
+                </div>
+                
+                <div class="step-navigation mt-4">
+                  <div></div>
+                  <button type="button" class="btn btn-primary" [disabled]="!formData.artDesSchadens" (click)="nextStep()">Weiter <i class="fa-solid fa-arrow-right"></i></button>
+                </div>
+              </div>
+            }
+
+            <!-- STEP 2: Versicherungsnehmer -->
+            @if (currentStep() === 2) {
+              <div class="step-pane animate-fade-in">
+                <h3 class="step-title">2. Angaben zum Versicherungsnehmer</h3>
+                
+                <div class="form-row">
+                  <div class="form-group col">
+                    <label for="vorname">Vorname *</label>
+                    <input type="text" id="vorname" name="vorname" class="form-control" [(ngModel)]="formData.vorname" required #vnInput="ngModel">
+                    @if (vnInput.invalid && vnInput.touched) {
+                      <span class="error-msg">Pflichtfeld</span>
+                    }
+                  </div>
+                  <div class="form-group col">
+                    <label for="nachname">Nachname *</label>
+                    <input type="text" id="nachname" name="nachname" class="form-control" [(ngModel)]="formData.nachname" required #nnInput="ngModel">
+                    @if (nnInput.invalid && nnInput.touched) {
+                      <span class="error-msg">Pflichtfeld</span>
+                    }
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group col">
+                    <label for="strasse">Straße / Hausnummer</label>
+                    <input type="text" id="strasse" name="strasse" class="form-control" [(ngModel)]="formData.strasse">
+                  </div>
+                  <div class="form-group col">
+                    <label for="plzOrt">PLZ / Ort</label>
+                    <input type="text" id="plzOrt" name="plzOrt" class="form-control" [(ngModel)]="formData.plzOrt">
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group col">
+                    <label for="telefon">Telefonnummer</label>
+                    <input type="tel" id="telefon" name="telefon" class="form-control" [(ngModel)]="formData.telefon">
+                  </div>
+                  <div class="form-group col">
+                    <label for="email">E-Mail-Adresse *</label>
+                    <input type="email" id="email" name="email" class="form-control" [(ngModel)]="formData.email" required email #emInput="ngModel">
+                    @if (emInput.invalid && emInput.touched) {
+                      <span class="error-msg">Geben Sie eine gültige E-Mail-Adresse ein.</span>
+                    }
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group col">
+                    <label for="versicherungsnummer">Versicherungsnummer (falls zur Hand)</label>
+                    <input type="text" id="versicherungsnummer" name="versicherungsnummer" class="form-control" [(ngModel)]="formData.versicherungsnummer">
+                  </div>
+                  <div class="form-group col">
+                    <label for="schadennummer">Bereits vergebene Schadennummer (falls vorhanden)</label>
+                    <input type="text" id="schadennummer" name="schadennummer" class="form-control" [(ngModel)]="formData.schadennummer">
+                  </div>
+                </div>
+
+                <div class="step-navigation mt-4">
+                  <button type="button" class="btn btn-outline" (click)="prevStep()"><i class="fa-solid fa-arrow-left"></i> Zurück</button>
+                  <button type="button" class="btn btn-primary" [disabled]="!formData.vorname || !formData.nachname || emInput.invalid" (click)="nextStep()">Weiter <i class="fa-solid fa-arrow-right"></i></button>
+                </div>
+              </div>
+            }
+
+            <!-- STEP 3: Entschädigung -->
+            @if (currentStep() === 3) {
+              <div class="step-pane animate-fade-in">
+                <h3 class="step-title">3. An wen soll eine eventuelle Entschädigung gezahlt werden?</h3>
+                <p class="step-desc">Bitte tragen Sie hier die Bankverbindung für Erstattungsleistungen ein.</p>
+                
+                <div class="form-row">
+                  <div class="form-group col">
+                    <label for="entschaedigungVorname">Vorname des Empfängers</label>
+                    <input type="text" id="entschaedigungVorname" name="entschaedigungVorname" class="form-control" [(ngModel)]="formData.entschaedigungVorname">
+                  </div>
+                  <div class="form-group col">
+                    <label for="entschaedigungNachname">Nachname des Empfängers</label>
+                    <input type="text" id="entschaedigungNachname" name="entschaedigungNachname" class="form-control" [(ngModel)]="formData.entschaedigungNachname">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="bankName">Name der Bank / des Kreditinstituts</label>
+                  <input type="text" id="bankName" name="bankName" class="form-control" [(ngModel)]="formData.bankName">
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group col">
+                    <label for="iban">IBAN</label>
+                    <input type="text" id="iban" name="iban" class="form-control" placeholder="DE..." [(ngModel)]="formData.iban">
+                  </div>
+                  <div class="form-group col">
+                    <label for="bic">BIC / Swift-Code</label>
+                    <input type="text" id="bic" name="bic" class="form-control" [(ngModel)]="formData.bic">
+                  </div>
+                </div>
+
+                <div class="step-navigation mt-4">
+                  <button type="button" class="btn btn-outline" (click)="prevStep()"><i class="fa-solid fa-arrow-left"></i> Zurück</button>
+                  <button type="button" class="btn btn-primary" (click)="nextStep()">Weiter <i class="fa-solid fa-arrow-right"></i></button>
+                </div>
+              </div>
+            }
+
+            <!-- STEP 4: Angaben zum Schaden -->
+            @if (currentStep() === 4) {
+              <div class="step-pane animate-fade-in">
+                <h3 class="step-title">4. Genaue Angaben zum Schadenhergang</h3>
+                
+                <div class="form-row">
+                  <div class="form-group col">
+                    <label for="wannEingetreten">Wann trat der Schaden ein? *</label>
+                    <input type="date" id="wannEingetreten" name="wannEingetreten" class="form-control" [(ngModel)]="formData.wannEingetreten" required>
+                  </div>
+                  <div class="form-group col">
+                    <label for="wannBemerkt">Wann haben Sie den Schaden bemerkt?</label>
+                    <input type="date" id="wannBemerkt" name="wannBemerkt" class="form-control" [(ngModel)]="formData.wannBemerkt">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="woEreignet">Ort des Geschehens (Genaue Orts-/Adressangabe)</label>
+                  <input type="text" id="woEreignet" name="woEreignet" class="form-control" [(ngModel)]="formData.woEreignet">
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group col">
+                    <label for="wohnungstyp">Um was für ein Gebäude handelt es sich?</label>
+                    <select id="wohnungstyp" name="wohnungstyp" class="form-control" [(ngModel)]="formData.wohnungstyp">
+                      <option value="Bitte wählen">Bitte wählen</option>
+                      <option value="Mietwohnung">Mietwohnung</option>
+                      <option value="Eigentumswohnung">Eigentumswohnung</option>
+                      <option value="eigenes Haus">Eigenes Haus / Hofstelle</option>
+                      <option value="Gewerbehalle">Gewerbehalle / Stallung</option>
+                    </select>
+                  </div>
+                  <div class="form-group col">
+                    <label for="dritteSchuld">Wurde der Schaden durch Dritte verursacht?</label>
+                    <select id="dritteSchuld" name="dritteSchuld" class="form-control" [(ngModel)]="formData.dritteSchuld">
+                      <option value="Bitte wählen">Bitte wählen</option>
+                      <option value="Nein">Nein</option>
+                      <option value="Ja">Ja</option>
+                    </select>
+                  </div>
+                </div>
+
+                <!-- Polizei section -->
+                <div class="form-row">
+                  <div class="form-group col">
+                    <label for="polizeiAnzeige">Wurde bereits Anzeige bei der Polizei erstattet?</label>
+                    <select id="polizeiAnzeige" name="polizeiAnzeige" class="form-control" [(ngModel)]="formData.polizeiAnzeige">
+                      <option value="Bitte wählen">Bitte wählen</option>
+                      <option value="Nein">Nein</option>
+                      <option value="Ja">Ja</option>
+                    </select>
+                  </div>
+                  @if (formData.polizeiAnzeige === 'Ja') {
+                    <div class="form-group col animate-fade-in">
+                      <label for="polizeiDienststelle">Polizeidienststelle & Aktenzeichen</label>
+                      <input type="text" id="polizeiDienststelle" name="polizeiDienststelle" class="form-control" placeholder="z.B. PI Hersbruck, Az: 123/45" [(ngModel)]="formData.polizeiDienststelle">
+                    </div>
+                  }
+                </div>
+
+                <!-- Einbruch details if relevant -->
+                <div class="form-group">
+                  <label for="einbruchspuren">Sind sichtbare Einbruchsspuren vorhanden? (Fenster, Türen, Wände)</label>
+                  <textarea id="einbruchspuren" name="einbruchspuren" class="form-control" rows="2" placeholder="Wenn ja, beschreiben Sie diese kurz..." [(ngModel)]="formData.einbruchspuren"></textarea>
+                </div>
+
+                <div class="step-navigation mt-4">
+                  <button type="button" class="btn btn-outline" (click)="prevStep()"><i class="fa-solid fa-arrow-left"></i> Zurück</button>
+                  <button type="button" class="btn btn-primary" [disabled]="!formData.wannEingetreten" (click)="nextStep()">Weiter <i class="fa-solid fa-arrow-right"></i></button>
+                </div>
+              </div>
+            }
+
+            <!-- STEP 5: Beschreibung & Bestätigung -->
+            @if (currentStep() === 5) {
+              <div class="step-pane animate-fade-in">
+                <h3 class="step-title">5. Beschreibung des Schadens & Rechtliches</h3>
+                
+                <div class="form-group">
+                  <label for="beschreibung">Detaillierte Schadenbeschreibung *</label>
+                  <textarea 
+                    id="beschreibung" 
+                    name="beschreibung" 
+                    class="form-control" 
+                    rows="6" 
+                    placeholder="Beschreiben Sie bitte sachlich, wie es zu dem Schaden kam und welche Gegenstände beschädigt wurden." 
+                    [(ngModel)]="formData.beschreibung" 
+                    required 
+                    #descInput="ngModel"></textarea>
+                  @if (descInput.invalid && descInput.touched) {
+                    <span class="error-msg">Bitte beschreiben Sie den Schaden.</span>
+                  }
+                </div>
+
+                <div class="upload-simulation-box">
+                  <i class="fa-solid fa-cloud-arrow-up upload-icon"></i>
+                  <div>
+                    <h4>Schadenfotos beifügen</h4>
+                    <p>Nach Absenden dieses Formulars können Sie uns Fotos direkt per Mail an info&#64;wallis-huehsam.de senden (Max. 10 MB insgesamt).</p>
+                  </div>
+                </div>
+
+                <div class="legal-statements">
+                  <div class="checkbox-group">
+                    <input type="checkbox" id="bestaetigt" name="bestaetigt" [(ngModel)]="formData.bestaetigt" required>
+                    <label for="bestaetigt">
+                      Ich bestätige, dass ich alle Angaben wahrheitsgemäß und nach bestem Wissen gemacht habe. Für die Richtigkeit trage ich die alleinige Verantwortung. Mir ist bekannt, dass vorsätzliche Falschangaben zum Verlust des Versicherungsschutzes führen. *
+                    </label>
+                  </div>
+
+                  <div class="checkbox-group mt-3">
+                    <input type="checkbox" id="datenschutzAkzeptiert" name="datenschutzAkzeptiert" [(ngModel)]="formData.datenschutzAkzeptiert" required>
+                    <label for="datenschutzAkzeptiert">
+                      Ich habe die <a routerLink="/datenschutz" target="_blank" class="legal-link">Datenschutzerklärung</a> gelesen und stimme der Verarbeitung meiner Daten zur Bearbeitung der Schadenmeldung zu. *
+                    </label>
+                  </div>
+                </div>
+
+                <div class="form-row mt-4">
+                  <div class="form-group col-md-4">
+                    <label for="ortDatum">Ort, Datum *</label>
+                    <input type="text" id="ortDatum" name="ortDatum" class="form-control" placeholder="z.B. Hersbruck, 11.06.2026" [(ngModel)]="formData.ortDatum" required>
+                  </div>
+                </div>
+
+                <div class="step-navigation mt-4">
+                  <button type="button" class="btn btn-outline" (click)="prevStep()"><i class="fa-solid fa-arrow-left"></i> Zurück</button>
+                  <button type="submit" class="btn btn-primary btn-submit-claim" [disabled]="claimForm.invalid || !formData.bestaetigt || !formData.datenschutzAkzeptiert || !formData.ortDatum">Schaden abschicken <i class="fa-solid fa-paper-plane"></i></button>
+                </div>
+              </div>
+            }
+
+          </form>
+        } @else {
+          <!-- SUCCESS SCREEN -->
+          <div class="success-screen animate-fade-in">
+            <div class="success-icon-bubble">
+              <i class="fa-solid fa-circle-check"></i>
+            </div>
+            <h2>Vielen Dank für Ihre Schadenmeldung!</h2>
+            <p class="lead-text">Wir haben Ihre Meldung über den Schaden "{{formData.artDesSchadens}}" erfolgreich registriert.</p>
+            <div class="success-summary">
+              <p><strong>Referenzkunde:</strong> {{formData.vorname}} {{formData.nachname}}</p>
+              <p><strong>E-Mail:</strong> {{formData.email}}</p>
+              <p><strong>Schadendatum:</strong> {{formData.wannEingetreten}}</p>
+              <p class="info-note">Ein Mitarbeiter von Wallis & Hühsam wird sich in Kürze unter den angegebenen Kontaktdaten mit Ihnen in Verbindung setzen, um die weitere Abwicklung zu besprechen.</p>
+            </div>
+            <button type="button" class="btn btn-primary" (click)="resetForm()">Weiteren Schaden melden</button>
+            <a routerLink="/" class="btn btn-outline ml-2">Zur Startseite</a>
+          </div>
+        }
+
+      </div>
+    </div>
+  </section>
+</div>

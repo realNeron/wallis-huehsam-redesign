@@ -1,0 +1,86 @@
+<div class="team-page-wrapper">
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="container hero-container animate-fade-in">
+      <span class="hero-tag">Unser Team</span>
+      <h1>Über uns & Ansprechpartner</h1>
+      <p class="hero-sub">Lernen Sie die Menschen hinter Wallis & Hühsam kennen. Unabhängige Beratung und persönliche Betreuung seit über 20 Jahren.</p>
+    </div>
+  </section>
+
+  <!-- Team Sections -->
+  <section class="section team-section">
+    <div class="container">
+      
+      <!-- Management Section -->
+      <div class="management-section-wrapper mb-5">
+        <h2 class="section-title">Geschäftsführung</h2>
+        <div class="divider"></div>
+        <div class="grid grid-cols-2 management-grid">
+          @for (member of management; track member.name) {
+            <div class="team-card card management-card animate-fade-in">
+              <div class="avatar-container">
+                <!-- User SVG outline representing male gender -->
+                <svg viewBox="0 0 100 100" class="avatar-svg">
+                  <circle cx="50" cy="45" r="20" fill="rgba(27,67,50,0.1)"/>
+                  <path d="M20,90 C20,70 30,65 50,65 C70,65 80,70 80,90" fill="none" stroke="var(--primary)" stroke-width="4" stroke-linecap="round"/>
+                  <circle cx="50" cy="42" r="14" fill="none" stroke="var(--primary)" stroke-width="4"/>
+                </svg>
+              </div>
+              <div class="team-info">
+                <h3>{{member.name}}</h3>
+                <span class="role-badge">{{member.role}}</span>
+                <p class="contact-action">
+                  <a href="mailto:{{member.email}}" class="btn btn-outline btn-email">
+                    <i class="fa-solid fa-envelope"></i> E-Mail schreiben
+                  </a>
+                </p>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+
+      <!-- Employees Section -->
+      <div class="staff-section-wrapper">
+        <h2 class="section-title">Mitarbeiter</h2>
+        <div class="divider"></div>
+        <div class="grid grid-cols-4 staff-grid">
+          @for (member of staff; track member.name) {
+            <div class="team-card card staff-card animate-fade-in">
+              <div class="avatar-container">
+                <!-- User SVG outline based on gender -->
+                @if (member.gender === 'm') {
+                  <svg viewBox="0 0 100 100" class="avatar-svg">
+                    <circle cx="50" cy="45" r="20" fill="rgba(27,67,50,0.06)"/>
+                    <path d="M25,85 C25,72 32,68 50,68 C68,68 75,72 75,85" fill="none" stroke="var(--primary)" stroke-width="3" stroke-linecap="round"/>
+                    <circle cx="50" cy="45" r="12" fill="none" stroke="var(--primary)" stroke-width="3"/>
+                  </svg>
+                } @else {
+                  <svg viewBox="0 0 100 100" class="avatar-svg">
+                    <circle cx="50" cy="45" r="20" fill="rgba(143,92,56,0.06)"/>
+                    <path d="M25,85 C25,72 32,68 50,68 C68,68 75,72 75,85" fill="none" stroke="var(--secondary)" stroke-width="3" stroke-linecap="round"/>
+                    <circle cx="50" cy="45" r="12" fill="none" stroke="var(--secondary)" stroke-width="3"/>
+                    <!-- Hair silhouette for women representation -->
+                    <path d="M36,45 C36,32 64,32 64,45" fill="none" stroke="var(--secondary)" stroke-width="3" stroke-linecap="round"/>
+                  </svg>
+                }
+              </div>
+              <div class="team-info">
+                <h4>{{member.name}}</h4>
+                <span class="staff-role">{{member.role}}</span>
+                <a href="mailto:{{member.email}}" class="mail-icon-link" aria-label="E-Mail an {{member.name}} senden">
+                  <i class="fa-solid fa-envelope"></i>
+                </a>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Quicklinks Section -->
+  <app-quicklinks></app-quicklinks>
+</div>

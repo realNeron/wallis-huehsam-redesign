@@ -1,0 +1,338 @@
+.map-page-wrapper {
+  animation: fadeIn var(--transition-slow) forwards;
+}
+
+/* Page Hero shares global layout from service.css */
+.page-hero {
+  background: linear-gradient(135deg, var(--primary-dark) 0%, #112d22 100%);
+  color: var(--text-light);
+  padding: 6rem 0 4rem 0;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(82, 183, 136, 0.15);
+}
+
+.page-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 80% 20%, rgba(82, 183, 136, 0.12) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.hero-tag {
+  display: inline-block;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+}
+
+.page-hero h1 {
+  color: var(--text-light);
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.hero-sub {
+  font-size: 1.15rem;
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 700px;
+  line-height: 1.6;
+}
+
+/* Map Section Grid */
+.map-section {
+  padding: 4rem 0;
+  background-color: var(--bg-accent);
+}
+
+.map-grid {
+  margin-top: -6rem;
+  margin-bottom: 4rem;
+  gap: 3rem;
+  position: relative;
+  z-index: 10;
+}
+
+.office-details-panel {
+  height: 100%;
+}
+
+.details-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-lg);
+  padding: 3rem;
+  box-shadow: var(--shadow-lg);
+  height: 100%;
+}
+
+.office-tag {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  background-color: rgba(27, 67, 50, 0.08);
+  border: 1px solid rgba(27, 67, 50, 0.15);
+  color: var(--primary);
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: var(--border-radius-sm);
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+}
+
+.details-card h2 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--primary-dark);
+}
+
+.divider {
+  width: 60px;
+  height: 4px;
+  background-color: var(--secondary);
+  margin: 1.25rem 0 2rem 0;
+  border-radius: var(--border-radius-full);
+}
+
+.office-details-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.office-details-list li {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+}
+
+.office-details-list li i {
+  color: var(--primary);
+  font-size: 1.2rem;
+  background-color: rgba(27, 67, 50, 0.05);
+  padding: 0.65rem;
+  border-radius: var(--border-radius-sm);
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.office-details-list li strong {
+  display: block;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  margin-bottom: 0.25rem;
+}
+
+.office-details-list li span,
+.office-details-list li a {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-main);
+  line-height: 1.5;
+}
+
+.office-details-list li a:hover {
+  color: var(--accent-dark);
+  text-decoration: underline;
+}
+
+.office-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 2.5rem;
+  width: 100%;
+}
+
+.office-actions .btn {
+  width: 100%;
+  justify-content: center;
+  text-align: center;
+  padding: 0.8rem 1.5rem;
+}
+
+/* Map visual */
+.map-visual-panel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.map-container {
+  width: 100%;
+  max-width: 460px;
+  background-color: var(--bg-card);
+  padding: 2.5rem 2rem 2rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border-color);
+}
+
+.map-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 567.36 / 781.59; /* Exact aspect ratio of the brand SVG map */
+  display: block;
+  margin: 0 auto;
+}
+
+.germany-map-image {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.germany-map-image path {
+  fill: #f4f1ea !important; /* light warm background for map states */
+  stroke: #ffffff !important;
+  stroke-width: 1.5px;
+  transition: fill var(--transition-fast);
+}
+
+.germany-map-image path:hover {
+  fill: rgba(106, 176, 35, 0.08) !important;
+}
+
+/* Pulsing pins */
+.map-pin-btn {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  z-index: 10;
+  cursor: pointer;
+  outline: none;
+}
+
+.map-pin-btn:hover {
+  z-index: 50;
+}
+
+.map-pin-btn.active {
+  z-index: 20;
+}
+
+.pin-ring {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: var(--accent);
+  opacity: 0.6;
+  animation: pinPulse 2s infinite ease-out;
+  pointer-events: none;
+}
+
+.pin-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--accent);
+  border: 2px solid white;
+  box-shadow: var(--shadow-sm);
+  z-index: 2;
+  transition: all var(--transition-fast);
+}
+
+.map-pin-btn:hover .pin-dot,
+.map-pin-btn.active .pin-dot {
+  background-color: var(--primary);
+  transform: scale(1.4);
+  box-shadow: 0 0 10px rgba(27, 67, 50, 0.4);
+}
+
+.map-pin-btn.active .pin-ring {
+  background-color: var(--primary);
+  opacity: 0.7;
+}
+
+@keyframes pinPulse {
+  0% { transform: scale(0.6); opacity: 0.6; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+
+/* Label for pins */
+.pin-label {
+  position: absolute;
+  top: 50%;
+  left: 24px;
+  transform: translateY(-50%);
+  background-color: var(--bg-card);
+  padding: 0.3rem 0.6rem;
+  border-radius: var(--border-radius-sm);
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 0.8rem;
+  color: var(--primary-dark);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-color);
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0.9;
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
+}
+
+/* Position label to the left for Prichsenstadt so it doesn't overlap Hersbruck! */
+.map-pin-btn[style*="left: 55"] .pin-label {
+  left: auto;
+  right: 24px;
+}
+
+.map-pin-btn:hover .pin-label,
+.map-pin-btn.active .pin-label {
+  opacity: 1;
+  color: var(--primary);
+  border-color: var(--accent-light);
+  transform: translateY(-50%) scale(1.05);
+}
+
+.map-tip {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  margin-top: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: rgba(27,67,50,0.03);
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius-full);
+}
+
+.map-tip i {
+  color: var(--accent-dark);
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .map-grid {
+    grid-template-columns: 1fr;
+    margin-top: -4rem;
+    gap: 2.5rem;
+  }
+  .details-card {
+    padding: 2rem;
+  }
+}
