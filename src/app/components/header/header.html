@@ -1,16 +1,11 @@
-<header class="main-header glass-panel">
+<header class="glass-header">
   <div class="container header-container">
     <a routerLink="/" class="logo-area" (click)="closeMenu()" aria-label="Wallis & Hühsam Startseite">
       <img src="assets/logo.png" alt="Wallis & Hühsam GmbH & Co. KG Versicherungsmakler" class="company-logo">
     </a>
 
-    <!-- Mobile Navigation Toggle -->
-    <button class="nav-toggle" (click)="toggleMenu()" aria-label="Menü öffnen" [attr.aria-expanded]="isMenuOpen()">
-      <span class="hamburger" [class.open]="isMenuOpen()"></span>
-    </button>
-
-    <!-- Navigation Menu -->
-    <nav class="main-nav" [class.open]="isMenuOpen()">
+    <!-- Desktop Navigation -->
+    <nav class="desktop-nav">
       <ul class="nav-list">
         <li>
           <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="closeMenu()">Startseite</a>
@@ -75,13 +70,78 @@
         <li>
           <a routerLink="/unsere-partner" routerLinkActive="active" (click)="closeMenu()">Unsere Partner</a>
         </li>
-        
-        <li class="contact-cta">
-          <a routerLink="/kontakt" routerLinkActive="active" (click)="closeMenu()" class="contact-cta-btn">
-            <i class="fa-solid fa-phone-volume"></i> Kontakt
-          </a>
-        </li>
       </ul>
     </nav>
+
+    <!-- Header Actions (CTA Buttons & Mobile Menu Trigger) -->
+    <div class="header-actions">
+      <!-- Desktop-only Contact CTA Button -->
+      <a routerLink="/kontakt" routerLinkActive="active" (click)="closeMenu()" class="contact-cta-btn">
+        <i class="fa-solid fa-phone-volume"></i> Kontakt
+      </a>
+
+      <!-- Mobile Menu Toggle Button (hamburger icon replaces native CSS burger lines) -->
+      <button class="menu-btn" (click)="toggleMenu()" aria-label="Menü öffnen" [attr.aria-expanded]="isMenuOpen()">
+        <i class="fa-solid" [class.fa-xmark]="isMenuOpen()" [class.fa-bars]="!isMenuOpen()"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Dropdown Navigation Drawer -->
+  <div class="mobile-nav-drawer" [class.open]="isMenuOpen()">
+    <div class="mobile-nav-links">
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="closeMenu()">Startseite</a>
+      
+      <!-- Dropdown "Unser Service" for mobile -->
+      <div class="mobile-dropdown" [class.active]="isServiceDropdownOpen()">
+        <button class="mobile-dropdown-trigger" (click)="toggleServiceDropdown($event)">
+          Unser Service <i class="fa-solid fa-chevron-down dropdown-arrow"></i>
+        </button>
+        <div class="mobile-dropdown-menu">
+          <a routerLink="/unser-service/was-koennen-wir-fuer-sie-tun" routerLinkActive="active" (click)="closeMenu()">
+            <i class="fa-solid fa-hand-holding-hand"></i> Was können wir tun
+          </a>
+          <a routerLink="/unser-service/schaden-melden" routerLinkActive="active" (click)="closeMenu()">
+            <i class="fa-solid fa-triangle-exclamation"></i> Schaden melden
+          </a>
+          <a routerLink="/unser-service/konzepte/kraftfahrzeuge-und-schlepper" routerLinkActive="active" (click)="closeMenu()">
+            <i class="fa-solid fa-tractor"></i> Kfz & Schlepper
+          </a>
+          <a routerLink="/unser-service/konzepte/maschinenbruch-und-elektronik" routerLinkActive="active" (click)="closeMenu()">
+            <i class="fa-solid fa-microchip"></i> Maschinenbruch & Elektronik
+          </a>
+        </div>
+      </div>
+
+      <!-- Dropdown "Rechner" for mobile -->
+      <div class="mobile-dropdown" [class.active]="isRechnerDropdownOpen()">
+        <button class="mobile-dropdown-trigger" (click)="toggleRechnerDropdown($event)">
+          Rechner <i class="fa-solid fa-chevron-down dropdown-arrow"></i>
+        </button>
+        <div class="mobile-dropdown-menu">
+          <a routerLink="/rechner/auslandskrankenversicherung" routerLinkActive="active" (click)="closeMenu()">
+            <i class="fa-solid fa-plane"></i> Auslandskrankenversicherung
+          </a>
+          <a routerLink="/rechner/reiseversicherung-travelsecure" routerLinkActive="active" (click)="closeMenu()">
+            <i class="fa-solid fa-umbrella-beach"></i> Reiseversicherung
+          </a>
+        </div>
+      </div>
+
+      <a routerLink="/in-ihrer-naehe" routerLinkActive="active" (click)="closeMenu()">In Ihrer Nähe</a>
+      <a routerLink="/ueber-uns" routerLinkActive="active" (click)="closeMenu()">Über uns</a>
+      <a routerLink="/unsere-partner" routerLinkActive="active" (click)="closeMenu()">Unsere Partner</a>
+      
+      <!-- Mobile-only Contact link -->
+      <a routerLink="/kontakt" routerLinkActive="active" (click)="closeMenu()" class="mob-contact-btn">
+        <i class="fa-solid fa-phone-volume"></i> Kontakt
+      </a>
+    </div>
+
+    <!-- Mobile Drawer Footer info -->
+    <div class="mob-footer">
+      <p>Wallis & Hühsam GmbH & Co. KG</p>
+      <a href="mailto:info@wallis-huehsam.de"><i class="fa-solid fa-envelope"></i> info@wallis-huehsam.de</a>
+    </div>
   </div>
 </header>
