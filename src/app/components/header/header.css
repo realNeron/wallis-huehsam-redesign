@@ -33,7 +33,7 @@
 }
 
 .company-logo {
-  height: 66px; /* Adjusted to 66px for elegant fitting and clear text */
+  height: 60px; /* Adjusted to 60px for elegant fitting */
   width: auto;
   display: block;
   transition: var(--transition-smooth);
@@ -403,7 +403,7 @@
 
 @media (max-width: 576px) {
   .company-logo {
-    height: 50px; /* Adjusted to 50px for better mobile fit and clear text */
+    height: 48px; /* Adjusted to 48px for better mobile fit */
   }
   
   .header-container {
