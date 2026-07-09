@@ -22,6 +22,11 @@ export class HeaderComponent {
     this.isRechnerDropdownOpen.set(false);
   }
 
+  onLogoClick() {
+    this.closeMenu();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
   toggleServiceDropdown(event: Event) {
     event.stopPropagation();
     this.isServiceDropdownOpen.update(v => !v);
